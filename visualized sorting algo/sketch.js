@@ -7,8 +7,7 @@ let nums = 50;  //amt of numbers in array
 
 function setup() {
   createCanvas(400, 400);
-  background(100);
-  noStroke();
+  
   
   bSpacing = (width / nums) / 4;
   bWidth = bSpacing * 2;
@@ -17,28 +16,13 @@ function setup() {
     arr[i - 1] = i;
   }
 
-  circle(10, 10 , 10);
-  rect(10, 10, 10, 10);
-  
-  shuffleArr();
-  
+  shuf = createButton('shuffle');
+  shuf.position(width / 2, height - 30);
+  shuf.mousePressed(shuffleArr);
 
-  var x = bSpacing;
-  var growthfactor = height / nums - 1.5;
-  for(let i = 0; i < arr.length; i++){
-    
-    let num = arr[i];
-    num *= growthfactor;
-    rect(x, (height - 50) - num, bWidth, num);
-    let c = color(0, num, 0);
-    fill(c);
-    x+= width / nums;
-  }
-  
-
-
-  button = createButton('click me');
-  button.position(width / 2, height - 30);
+  sortbutt = createButton('sort');
+  sortbutt.position(width / 2 - 50, height - 30);
+  sortbutt.mousePressed(selectionSort)
 
   string = '';
   for(let i = 0; i< arr.length; i++){
@@ -56,10 +40,29 @@ function setup() {
 
 }
 
+function draw() {
+  clear();
+  background(0);
+  noStroke();
 
 
+  let x = bSpacing;
+  let growthfactor =  height / nums - 1.5;
+  let c = color(255);
 
-function draw() {}
+  for(let i = 0; i < arr.length; i++){
+    let num = arr[i];
+    num *= growthfactor;
+
+    //let c = color(num, num, num);
+    fill(c);
+    rect(x, (height - 50) - num, bWidth, num);
+    
+    x+= width / nums;
+  }
+
+
+}
 
 function swap(x, y){
   var cache = arr[x];
