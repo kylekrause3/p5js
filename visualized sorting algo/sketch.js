@@ -5,6 +5,8 @@ let bWidth; //width of boxes
 let bSpacing;
 let nums = 50;  //amt of numbers in array
 
+
+
 function setup() {
   createCanvas(400, 400);
   
@@ -19,6 +21,8 @@ function setup() {
   shuf = createButton('shuffle');
   shuf.position(width / 2, height - 30);
   shuf.mousePressed(shuffleArr);
+
+  
 
   sortbutt = createButton('sort');
   sortbutt.position(width / 2 - 50, height - 30);
@@ -77,14 +81,11 @@ function shuffleArr(){
   }
 }
 
-
 function selectionSort(){
-  var cache;
   var small;
 
   for(let i = 0; i < arr.length - 1; i++){
     small = i;
-    cache = arr[i];
 
     for(let j = i + 1; j != arr.length; j++){
       if(arr[j] < arr[small]){
@@ -94,5 +95,22 @@ function selectionSort(){
 
     swap(small, i);
   }
-  
+
+  function mainLoop(){
+    for(let i = 0; i < arr.length - 1; i++){
+      small = i;
+      secondaryLoop(i)
+
+      swap(small, j)
+    }
+  }
+
+  function secondaryLoop(i){
+    for(let j = i + 1; j != arr.length; j++){
+      if(arr[j] < arr[small]){
+        small = j;
+      }
+    }
+  }
 }
+
