@@ -99,6 +99,7 @@ function selectionSort(){
   function mainLoop(){
     for(let i = 0; i < arr.length - 1; i++){
       small = i;
+
       secondaryLoop(i)
 
       swap(small, j)
@@ -112,5 +113,7 @@ function selectionSort(){
       }
     }
   }
+
+  
 }
 
